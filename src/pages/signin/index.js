@@ -1,5 +1,7 @@
+import axios from "axios";
 import { React, useState } from "react";
 import { Form, Button, Container, Card } from "react-bootstrap";
+import SAlert from "../../components/Alert";
 import SButton from "../../components/Button";
 import TextInputWithLabel from "../../components/TextInputWithLabel";
 
@@ -18,11 +20,27 @@ function PageSignIn() {
     // console.log(e.target.value);
   };
 
+  const handleSubmit = async () => {
+    try {
+      const res = await axios.post(
+        "http://localhost:9000/api/v1/cms/auth/signin",
+        {
+          email: form.email,
+          password: form.password,
+        }
+      );
+      console.log(res);
+    } catch (err) {
+      console.log(err.response.data.msg);
+    }
+  };
+
   return (
     <Container md={12}>
       <Card style={{ width: "50%" }} className="m-auto mt-5">
         <Card.Body>
           <Form>
+            <SAlert type="primary" message={"test"}></SAlert>
             <TextInputWithLabel
               label="Email Address"
               name="email"
@@ -54,7 +72,9 @@ function PageSignIn() {
               <Form.Check type="checkbox" label="Check me out" />
             </Form.Group>
             {/* <Button variant="primary">Submit</Button> */}
-            <SButton variant="primary">Submit</SButton>
+            <SButton variant="primary" action={handleSubmit}>
+              Submit
+            </SButton>
           </Form>
         </Card.Body>
       </Card>

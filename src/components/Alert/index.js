@@ -1,24 +1,28 @@
-import Alert from 'react-bootstrap/Alert';
+import Alert from "react-bootstrap/Alert";
 
-function BasicExample() {
-  return (
-    <>
-      {[
-        'primary',
-        'secondary',
-        'success',
-        'danger',
-        'warning',
-        'info',
-        'light',
-        'dark',
-      ].map((variant) => (
-        <Alert key={variant} variant={variant} fade={false}>
-          This is a {variant} alert—check it out!
-        </Alert>
-      ))}
-    </>
-  );
+// function SAlert({message, type}) {
+//   return (
+//     <>
+//       {[
+//         'primary',
+//         'secondary',
+//         'success',
+//         'danger',
+//         'warning',
+//         'info',
+//         'light',
+//         'dark',
+//       ].map((variant) => (
+//         <Alert key={variant} variant={type} fade={false}>
+//           This is a {variant} alert—check it out!
+//         </Alert>
+//       ))}
+//     </>
+//   );
+// }
+
+function SAlert({ message, type }) {
+  return <Alert type={type}>{message}</Alert>
 }
 
-export default BasicExample;
+export default SAlert;
