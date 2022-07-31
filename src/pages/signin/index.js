@@ -1,21 +1,19 @@
 import axios from "axios";
 import { React, useState } from "react";
-import { Form, Container, Card } from "react-bootstrap";
-import SAlert from "../../components/Alert";
-import SButton from "../../components/Button";
-import TextInputWithLabel from "../../components/TextInputWithLabel";
+import { Container, Card } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import Config from "../../configs";
+import SForm from "./form";
 
 function PageSignIn() {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const [form, setForm] = useState({
     email: "",
     password: "",
   });
 
-  const [isLoading, setIsLoading] = useState(false)
+  const [isLoading, setIsLoading] = useState(false);
 
   const [alert, setAlert] = useState({
     status: false,
@@ -28,18 +26,15 @@ function PageSignIn() {
   };
 
   const handleSubmit = async () => {
-    setIsLoading(true)
+    setIsLoading(true);
     try {
-      const res = await axios.post(
-        `${Config.api_host_dev}/cms/auth/signin`,
-        {
-          email: form.email,
-          password: form.password,
-        }
-      );
+      const res = await axios.post(`${Config.api_host_dev}/cms/auth/signin`, {
+        email: form.email,
+        password: form.password,
+      });
       console.log(res.data.data.token);
-      setIsLoading(false)
-      navigate('/')
+      setIsLoading(false);
+      navigate("/");
     } catch (err) {
       console.log(err.response.data.msg);
       setAlert({
@@ -54,33 +49,12 @@ function PageSignIn() {
     <Container md={12}>
       <Card style={{ width: "50%" }} className="m-auto mt-5">
         <Card.Body>
-          <Form>
-            {alert.status && (
-              <SAlert type={alert.type} message={alert.message} />
-            )}
-            <TextInputWithLabel
-              label="Email Address"
-              name="email"
-              value={form.email}
-              type="email"
-              placeholder="Enter email"
-              onChange={handleChange}
-            />
-            <TextInputWithLabel
-              label="Email Address"
-              name="password"
-              value={form.password}
-              type="password"
-              placeholder="Password"
-              onChange={handleChange}
-            />
-            <Form.Group className="mb-3" controlId="formBasicCheckbox">
-              <Form.Check type="checkbox" label="Check me out" />
-            </Form.Group>
-            <SButton variant="primary" action={handleSubmit} disabled={isLoading} loading={isLoading}>
-              Submit
-            </SButton>
-          </Form>
+          <SForm
+            form={form}
+            isLoading={isLoading}
+            handleChange={handleChange}
+            handleSubmit={handleSubmit}
+          />
         </Card.Body>
       </Card>
     </Container>
