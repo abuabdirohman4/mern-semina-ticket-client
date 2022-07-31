@@ -4,8 +4,11 @@ import { Form, Container, Card } from "react-bootstrap";
 import SAlert from "../../components/Alert";
 import SButton from "../../components/Button";
 import TextInputWithLabel from "../../components/TextInputWithLabel";
+import { useNavigate } from "react-router-dom";
 
 function PageSignIn() {
+  const navigate = useNavigate()
+
   const [form, setForm] = useState({
     email: "",
     password: "",
@@ -35,6 +38,7 @@ function PageSignIn() {
       );
       console.log(res.data.data.token);
       setIsLoading(false)
+      navigate('/')
     } catch (err) {
       console.log(err.response.data.msg);
       setAlert({
