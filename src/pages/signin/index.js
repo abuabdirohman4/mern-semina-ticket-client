@@ -5,6 +5,7 @@ import SAlert from "../../components/Alert";
 import SButton from "../../components/Button";
 import TextInputWithLabel from "../../components/TextInputWithLabel";
 import { useNavigate } from "react-router-dom";
+import Config from "../../configs";
 
 function PageSignIn() {
   const navigate = useNavigate()
@@ -30,7 +31,7 @@ function PageSignIn() {
     setIsLoading(true)
     try {
       const res = await axios.post(
-        "http://localhost:9000/api/v1/cms/auth/signin",
+        `${Config.api_host_dev}/cms/auth/signin`,
         {
           email: form.email,
           password: form.password,
