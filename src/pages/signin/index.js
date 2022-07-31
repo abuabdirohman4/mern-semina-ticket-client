@@ -1,6 +1,6 @@
 import axios from "axios";
 import { React, useState } from "react";
-import { Form, Button, Container, Card } from "react-bootstrap";
+import { Form, Container, Card } from "react-bootstrap";
 import SAlert from "../../components/Alert";
 import SButton from "../../components/Button";
 import TextInputWithLabel from "../../components/TextInputWithLabel";
@@ -11,16 +11,20 @@ function PageSignIn() {
     password: "",
   });
 
+  const [isLoading, setIsLoading] = useState(false)
+
+  const [alert, setAlert] = useState({
+    status: false,
+    type: "danger",
+    message: "",
+  });
+
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
-    // console.log("e.taget.name : ");
-    // console.log(e.target.name);
-    // console.log(" ");
-    // console.log("e.taget.value : ");
-    // console.log(e.target.value);
   };
 
   const handleSubmit = async () => {
+    setIsLoading(true)
     try {
       const res = await axios.post(
         "http://localhost:9000/api/v1/cms/auth/signin",
@@ -29,9 +33,15 @@ function PageSignIn() {
           password: form.password,
         }
       );
-      console.log(res);
+      console.log(res.data.data.token);
+      setIsLoading(false)
     } catch (err) {
       console.log(err.response.data.msg);
+      setAlert({
+        status: true,
+        message: err?.response?.data?.msg ?? "Internal Server Error",
+        type: "danger",
+      });
     }
   };
 
@@ -40,7 +50,9 @@ function PageSignIn() {
       <Card style={{ width: "50%" }} className="m-auto mt-5">
         <Card.Body>
           <Form>
-            <SAlert type="primary" message={"test"}></SAlert>
+            {alert.status && (
+              <SAlert type={alert.type} message={alert.message} />
+            )}
             <TextInputWithLabel
               label="Email Address"
               name="email"
@@ -57,22 +69,10 @@ function PageSignIn() {
               placeholder="Password"
               onChange={handleChange}
             />
-            {/* <Form.Group className="mb-3" controlId="formBasicEmail">
-              <Form.Label>Email address</Form.Label>
-              <Form.Control
-                name="email"
-                value={form.email}
-                type="email"
-                placeholder="Enter email"
-                onChange={handleChange}
-              />
-            </Form.Group> */}
-
             <Form.Group className="mb-3" controlId="formBasicCheckbox">
               <Form.Check type="checkbox" label="Check me out" />
             </Form.Group>
-            {/* <Button variant="primary">Submit</Button> */}
-            <SButton variant="primary" action={handleSubmit}>
+            <SButton variant="primary" action={handleSubmit} disabled={isLoading} loading={isLoading}>
               Submit
             </SButton>
           </Form>
