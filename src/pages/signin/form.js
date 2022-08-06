@@ -4,7 +4,13 @@ import SAlert from "../../components/Alert";
 import SButton from "../../components/Button";
 import TextInputWithLabel from "../../components/TextInputWithLabel";
 
-export default function SForm({alert, form, handleChange, handleSubmit, isLoading}) {
+export default function SForm({
+  alert,
+  form,
+  handleChange,
+  handleSubmit,
+  isLoading,
+}) {
   return (
     <Form>
       {alert.status && <SAlert type={alert.type} message={alert.message} />}
@@ -32,6 +38,7 @@ export default function SForm({alert, form, handleChange, handleSubmit, isLoadin
         action={handleSubmit}
         disabled={isLoading}
         loading={isLoading}
+        type='submit'
       >
         Submit
       </SButton>

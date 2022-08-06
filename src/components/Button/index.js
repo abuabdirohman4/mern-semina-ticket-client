@@ -9,6 +9,7 @@ export default function SButton({
   loading,
   disabled,
   className,
+  type,
 }) {
   return (
     <Button
@@ -17,6 +18,7 @@ export default function SButton({
       variant={variant}
       disabled={disabled}
       size={size}
+      type={type}
     >
       {loading ? "Loading..." : children}
     </Button>
