@@ -2,7 +2,7 @@ import axios from "axios";
 import { React, useState } from "react";
 import { Container, Card } from "react-bootstrap";
 import { useNavigate, Navigate } from "react-router-dom";
-import Config from "../../configs";
+import config from "../../configs";
 import SForm from "./form";
 
 function PageSignIn() {
@@ -28,7 +28,7 @@ function PageSignIn() {
   const handleSubmit = async () => {
     setIsLoading(true);
     try {
-      const res = await axios.post(`${Config.api_host_dev}/cms/auth/signin`, {
+      const res = await axios.post(`${config.api_host_dev}/cms/auth/signin`, {
         email: form.email,
         password: form.password,
       });
