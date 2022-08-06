@@ -1,7 +1,7 @@
 import axios from "axios";
 import { React, useState } from "react";
 import { Container, Card } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Navigate } from "react-router-dom";
 import Config from "../../configs";
 import SForm from "./form";
 
@@ -33,6 +33,8 @@ function PageSignIn() {
         password: form.password,
       });
       console.log(res.data.data.token);
+
+      localStorage.setItem("token", res.data.data.token);
       setIsLoading(false);
       navigate("/");
     } catch (err) {
@@ -44,6 +46,9 @@ function PageSignIn() {
       });
     }
   };
+
+  const token = localStorage.getItem("token");
+  if (token) return <Navigate to="/" replace={true} />;
 
   return (
     <Container md={12}>
