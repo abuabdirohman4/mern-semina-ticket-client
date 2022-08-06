@@ -55,7 +55,6 @@ function PageSignIn() {
             isLoading={isLoading}
             handleChange={handleChange}
             handleSubmit={handleSubmit}
-            handleKeyDown={handleKeyDown}
           />
         </Card.Body>
       </Card>
