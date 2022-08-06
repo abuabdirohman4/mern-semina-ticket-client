@@ -50,6 +50,7 @@ function PageSignIn() {
       <Card style={{ width: "50%" }} className="m-auto mt-5">
         <Card.Body>
           <SForm
+            alert={alert}
             form={form}
             isLoading={isLoading}
             handleChange={handleChange}
