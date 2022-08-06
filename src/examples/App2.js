@@ -1,8 +1,8 @@
 import './App.css';
 import { Hello } from './Hello'
-import { Title } from './Title'
-import Button from './components/Button'
-import Table from './components/Table'
+import { Title } from '../Title'
+import Button from '../components/Button'
+import Table from '../components/Table'
 
 
 function App() {
