@@ -22,10 +22,7 @@ export default function Dashboard() {
         </Container>
       </Navbar>
       <Container className="mt-3">
-        <SBreadCrumb />
-        {/* <Breadcrumb>
-          <Breadcrumb.Item active>Home</Breadcrumb.Item>
-        </Breadcrumb> */}
+        <SBreadCrumb textSecound={"Categories"} />
 
         <SButton>Tambah</SButton>
 
