@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Container, Table, Spinner } from "react-bootstrap";
-import { Navigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import SBreadCrumb from "../../components/Breadcrumb";
 import SButton from "../../components/Button";
 import SNavbar from "../../components/Navbar";
@@ -9,6 +9,7 @@ import config from "../../configs";
 
 export default function PageCategories() {
   const token = localStorage.getItem("token");
+  const navigate = useNavigate();
 
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -45,7 +46,7 @@ export default function PageCategories() {
       <Container className="mt-3">
         <SBreadCrumb textSecound={"Categories"} />
 
-        <SButton>Tambah</SButton>
+        <SButton action={() => navigate("/categories/create")}>Tambah</SButton>
 
         <Table striped bordered hover variant="dark" className="mt-3">
           <thead>
