@@ -6,6 +6,7 @@ import {
   Route,
   useParams,
   useNavigate,
+  useLocation,
 } from "react-router-dom";
 import "../App.css";
 
@@ -13,7 +14,19 @@ function Home() {
   return <h1>Home</h1>;
 }
 
+function useQuery() {
+  const { search } = useLocation;
+  return React.useMemo(() => new URLSearchParams(search), [search]);
+}
+
 function Categories() {
+  let location = useLocation();
+  console.log("Location");
+  console.log(location);
+
+  const query = useQuery();
+  console.log(query);
+  console.log(query.get("page"));
   return (
     <>
       <h1>Categories</h1>
