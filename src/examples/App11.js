@@ -19,9 +19,16 @@ function App() {
     console.log(number);
   };
 
-  const handleChange = () => {
+  const handleChange = (e) => {
+    console.log(e);
+    setForm({ ...form, [e.target.name]: e.target.value });
+    console.log(e.target.name);
+    console.log(e.target.value);
+  };
+
+  const handleSubmit = () => {
     // setUsia(2022 - tahunLahir);
-    setForm({...form, usia: 2022 - form.tahunLahir})
+    setForm({ ...form, usia: 2022 - form.tahunLahir });
   };
 
   return (
@@ -32,30 +39,32 @@ function App() {
       <hr />
       <h1>Aplikasi input data diri</h1>
       <p>
-        Nama ={" "}
+        Nama :{" "}
         <input
           type="text"
-          name="nama"
-          value={name}
+          name="name"
+          // value={name}
           // onChange={(e) => setName(e.target.value)}
           value={form.name}
-          onChange={(e) => setForm({...form, name: e.target.value})}
+          // onChange={(e) => setForm({ ...form, name: e.target.value })}
+          onChange={handleChange}
         />
       </p>
       <p>
-        Tahun Lahir ={" "}
+        Tahun Lahir :{" "}
         <input
           type="number"
           name="tahunLahir"
           // value={tahunLahir}
           // onChange={(e) => setTahunLahir(e.target.value)}
           value={form.tahunLahir}
-          onChange={(e) => setForm({...form, tahunLahir: e.target.value})}
+          // onChange={(e) => setForm({ ...form, tahunLahir: e.target.value })}
+          onChange={handleChange}
         />
       </p>
       {/* <p>Usia = {usia}</p> */}
-      <p>Usia = {form.usia}</p>
-      <Button onClick={handleChange}>Submit</Button>
+      <p>Umur saya : {form.usia}</p>
+      <Button onClick={handleSubmit}>Submit</Button>
     </Container>
   );
 }
