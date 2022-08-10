@@ -66,6 +66,14 @@ function App() {
         />
       </p>
       <p>
+        Tanpa Nama :{" "}
+        <Input
+          type="text"
+          value={form.name}
+          onChange={handleChange}
+        />
+      </p>
+      <p>
         Tahun Lahir :{" "}
         <Input
           type="number"
