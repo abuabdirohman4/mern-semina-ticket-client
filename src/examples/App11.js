@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Button, Container } from "react-bootstrap";
 import "../App.css";
+import Input from "../components/Input";
 
 function App() {
   // let number = 0
@@ -20,10 +21,10 @@ function App() {
   };
 
   const handleChange = (e) => {
-    console.log(e);
+    // console.log(e);
+    // console.log(e.target.name);
+    // console.log(e.target.value);
     setForm({ ...form, [e.target.name]: e.target.value });
-    console.log(e.target.name);
-    console.log(e.target.value);
   };
 
   const handleSubmit = () => {
@@ -40,7 +41,7 @@ function App() {
       <h1>Aplikasi input data diri</h1>
       <p>
         Nama :{" "}
-        <input
+        <Input
           type="text"
           name="name"
           // value={name}
@@ -52,7 +53,7 @@ function App() {
       </p>
       <p>
         Tahun Lahir :{" "}
-        <input
+        <Input
           type="number"
           name="tahunLahir"
           // value={tahunLahir}
