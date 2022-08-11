@@ -36,7 +36,7 @@ export default function PageCategories() {
       }
     };
     getCategoriesAPI();
-  }, []);
+  }, );
 
   if (!token) return <Navigate to="/signin" replace={true} />;
 

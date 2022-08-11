@@ -1,16 +1,17 @@
-import { USER_LOGIN, USER_LOGOUT } from './constants';
+import { USER_LOGIN, USER_LOGOUT } from "./constants";
 
-export function userLogin(token, role, username) {
+// export function userLogin(token, role, username) {
+export function userLogin(token, role) {
   return {
     type: USER_LOGIN,
     token,
     role,
-    username,
+    // username,
   };
 }
 
 export function userLogout() {
-  localStorage.removeItem('auth');
+  // localStorage.removeItem("auth");
   return {
     type: USER_LOGOUT,
   };

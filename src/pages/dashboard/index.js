@@ -1,14 +1,14 @@
 import React from "react";
 import { Container, Table } from "react-bootstrap";
-import { Navigate } from "react-router-dom";
+// import { Navigate } from "react-router-dom";
 import SBreadCrumb from "../../components/Breadcrumb";
 import SButton from "../../components/Button";
 import SNavbar from "../../components/Navbar";
 
 export default function Dashboard() {
-  const token = localStorage.getItem("token");
-  console.log(token);
-  if (!token) return <Navigate to="/signin" replace={true} />;
+  // const token = localStorage.getItem("token");
+  // console.log(token);
+  // if (!token) return <Navigate to="/signin" replace={true} />;
 
   return (
     <>
