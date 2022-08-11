@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import PageSignInPage from "./pages/signin";
@@ -6,8 +6,13 @@ import DashboardPage from "./pages/dashboard";
 import CategoriesPage from "./pages/categories";
 import CategoriesCreate from "./pages/categories/create";
 import CategoriesEdit from "./pages/categories/edit";
+import { listen } from "./redux/listener";
 
 function App() {
+  useEffect(() => {
+    listen()
+  }, [])
+
   return (
     <BrowserRouter>
       <Routes>
