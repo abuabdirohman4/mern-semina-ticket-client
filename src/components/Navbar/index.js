@@ -1,6 +1,6 @@
 import React from "react";
 import { Container, Nav, Navbar } from "react-bootstrap";
-import NavLink from "../Navlink";
+import NavAccess from "../NavAccess";
 import { useNavigate } from "react-router-dom";
 
 function SNavbar() {
@@ -10,14 +10,14 @@ function SNavbar() {
       <Container>
         <Navbar.Brand href="#home">Dashboard</Navbar.Brand>
         <Nav className="me-auto">
-          <NavLink action={() => navigate("/")}>Home</NavLink>
-          <NavLink action={() => navigate("/categories")}>Categories</NavLink>
-          <NavLink action={() => navigate("/talents")}>Talents</NavLink>
-          <NavLink action={() => navigate("/events")}>Events</NavLink>
-          <NavLink action={() => navigate("/participant")}>Participant</NavLink>
-          <NavLink action={() => navigate("/transactions")}>
+          <NavAccess action={() => navigate("/")}>Home</NavAccess>
+          <NavAccess action={() => navigate("/categories")}>Categories</NavAccess>
+          <NavAccess action={() => navigate("/talents")}>Talents</NavAccess>
+          <NavAccess action={() => navigate("/events")}>Events</NavAccess>
+          <NavAccess action={() => navigate("/participant")}>Participant</NavAccess>
+          <NavAccess action={() => navigate("/transactions")}>
             Transactions
-          </NavLink>
+          </NavAccess>
         </Nav>
       </Container>
     </Navbar>
