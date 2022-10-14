@@ -22,9 +22,9 @@ function SNavbar() {
         ? JSON.parse(localStorage.getItem('auth'))
         : {};
       
-      console.log("role setelah if ", role)
+      // console.log("role setelah if ", role)
       setRole(role);
-      console.log("role setelah setRole ", role)
+      // console.log("role setelah setRole ", role)
     };
     fetchData();
   }, []);
