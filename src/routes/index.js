@@ -1,6 +1,6 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 import GuardRoute from "../components/GuardRoute";
-import GuestOnlyRoute from "../components/GuestOnlyRoute";
+// import GuestOnlyRoute from "../components/GuestOnlyRoute";
 
 import Login from "../pages/signin";
 import { HomeRoute } from "./HomeRoute";
@@ -16,9 +16,9 @@ export function AppRoutes() {
         path="signin"
         element={
           /* user tidak boleh pakai token / untuk login / un-authentication */
-          <GuestOnlyRoute>
+          <GuardRoute>
             <Login />
-          </GuestOnlyRoute>
+          </GuardRoute>
         }
       />
       <Route
