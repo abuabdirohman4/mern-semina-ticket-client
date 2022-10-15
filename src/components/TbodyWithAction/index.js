@@ -16,6 +16,7 @@ function TbodyWithAction({
 }) {
   const navigate = useNavigate();
   // console.log("ini statusnya ", status)
+  // console.log("ini editUrl ", editUrl)
   return (
     <tbody>
       {status === "process" ? (

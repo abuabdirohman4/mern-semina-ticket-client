@@ -7,13 +7,12 @@ import { postData } from '../../utils/fetch';
 import { useNavigate } from "react-router-dom";
 // import axios from "axios";
 // import { config } from "../../configs";
-import SNavbar from "../../components/Navbar";
-// import { useDispatch } from "react-redux";
-// import { setNotif } from '../../redux/notif/actions';
+import { useDispatch } from "react-redux";
+import { setNotif } from '../../redux/notif/actions';
 
 function CategoryCreate() {
   // const token = localStorage.getItem("token");
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
 
@@ -39,13 +38,13 @@ function CategoryCreate() {
       //     Authorization: `Bearer ${token}`,
       //   },
       // });
-      // dispatch(
-      //   setNotif(
-      //     true,
-      //     'success',
-      //     `berhasil tambah kategori ${res.data.data.name}`
-      //   )
-      // );
+      dispatch(
+        setNotif(
+          true,
+          'success',
+          `berhasil tambah kategori ${res.data.data.name}`
+        )
+      );
       navigate("/categories");
       setIsLoading(false);
     } else {
@@ -61,7 +60,6 @@ function CategoryCreate() {
 
   return (
     <>
-      <SNavbar />
       <Container className="mt-3">
         <SBreadCrumb
           textSecound={"Categories"}

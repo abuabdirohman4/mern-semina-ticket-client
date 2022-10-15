@@ -9,6 +9,7 @@ import SButton from "../../components/Button";
 import { accessCategories } from "../../const/access";
 import { fetchCategories } from "../../redux/categories/actions";
 import Table from "../../components/TableWithAction";
+import SAlert from "../../components/Alert";
 
 export default function PageCategories() {
   // const token = localStorage.getItem("token");
@@ -43,7 +44,7 @@ export default function PageCategories() {
   // if (!token) return <Navigate to="/signin" replace={true} />;
 
   const dispatch = useDispatch();
-  // const notif = useSelector((state) => state.notif);
+  const notif = useSelector((state) => state.notif);
   const categories = useSelector((state) => state.categories);
   const [access, setAccess] = useState({
     tambah: false,
@@ -82,9 +83,16 @@ export default function PageCategories() {
         <SBreadCrumb textSecound={"Categories"} />
 
         {access.tambah && (
-          <SButton action={() => navigate("/categories/create")}>
+          <SButton
+            action={() => navigate("/categories/create")}
+            className={"mb-3"}
+          >
             Tambah
           </SButton>
+        )}
+
+        {notif.status && (
+          <SAlert type={notif.typeNotif} message={notif.message} />
         )}
 
         <Table
@@ -92,7 +100,7 @@ export default function PageCategories() {
           thead={["Nama", "Aksi"]}
           tbody={["name"]}
           data={categories.data}
-          editUrl={access.edit ? "categories/edit" : null}
+          editUrl={access.edit ? "/categories/edit" : null}
           deleteAction={access.hapus ? (id) => handleDelete(id) : null}
           withoutPagination
         />
