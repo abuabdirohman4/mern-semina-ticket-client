@@ -31,7 +31,7 @@ function CategoryEdit() {
 
   const fetchOneCategories = async () => {
     console.log("halo");
-    const res = await getData(`cms/categories/${categoryId}`);
+    const res = await getData(`/cms/categories/${categoryId}`);
     console.log("res ", res);
     setForm({ ...form, name: res.data.data.name });
   };

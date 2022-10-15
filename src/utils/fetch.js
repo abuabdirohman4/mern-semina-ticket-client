@@ -20,6 +20,7 @@ export async function getData(url, params) {
 }
 
 export async function postData(url, payload, formData) {
+  // try {
   const { token } = localStorage.getItem("auth")
     ? JSON.parse(localStorage.getItem("auth"))
     : {};
@@ -30,6 +31,9 @@ export async function postData(url, payload, formData) {
       "Content-Type": formData ? "multipart/form-data" : "application/json",
     },
   });
+  // } catch (err) {
+  //   handleError(err);
+  // }
 }
 
 export async function putData(url, payload) {
