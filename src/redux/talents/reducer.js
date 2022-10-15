@@ -29,6 +29,6 @@ export default function reducer(state = initialState, action) {
     case SET_KEYWORD:
       return { ...state, keyword: action.keyword };
     default:
-      return initialState;
+      return state;
   }
 }

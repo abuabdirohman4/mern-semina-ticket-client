@@ -20,8 +20,8 @@ const composerEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const rootReducers = combineReducers({
   auth: authReducer,
   categories: categoriesReducer,
-  notif: notifReducer,
   talents: talentsReducer,
+  notif: notifReducer,
   // payments: paymentsReducer,
   // events: eventsReducer,
   // lists: listsReducer,

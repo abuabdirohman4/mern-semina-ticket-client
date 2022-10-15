@@ -1,4 +1,4 @@
-import { debounce } from "debounce-promise";
+import debounce from "debounce-promise";
 import { getData } from "../../utils/fetch";
 import { clearNotif } from "../notif/actions";
 import {
@@ -35,8 +35,8 @@ export const fetchTalents = () => {
 
     try {
       setTimeout(() => {
-        dispatch(clearNotif), 5000;
-      });
+        dispatch(clearNotif());
+      }, 3000);
 
       let params = {
         keyword: getState().talents.keyword,
