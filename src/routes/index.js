@@ -6,7 +6,7 @@ import Login from "../pages/signin";
 import { HomeRoute } from "./HomeRoute";
 import { CategoriesRoute } from "./CategoriesRoute";
 import { TalentsRoute } from "./TalentsRoute";
-// import { PaymentsRoute } from "./PaymentsRoute";
+import { PaymentsRoute } from "./PaymentsRoute";
 import SNavbar from "../components/Navbar";
 
 export function AppRoutes() {
@@ -34,7 +34,7 @@ export function AppRoutes() {
         <Route path="dashboard/*" element={<HomeRoute />} />
         <Route path='categories/*' element={<CategoriesRoute />} />
         <Route path='talents/*' element={<TalentsRoute />} />
-        {/* <Route path='payments/*' element={<PaymentsRoute />} /> */}
+        <Route path='payments/*' element={<PaymentsRoute />} />
         <Route path="" element={<Navigate to="/dashboard" replace={true} />} />
         <Route path="*" element={<HomeRoute />} />
       </Route>
