@@ -28,8 +28,12 @@ function OrderPage() {
   }, [dispatch]);
 
   const displayDate = `${
-    orders.date?.startDate ? formatDate(orders.date?.startDate) : ""
-  }${orders.date?.endDate ? " - " + formatDate(orders.date.endDate) : ""}`;
+    orders.date?.startDate ? 
+      formatDate(orders.date?.startDate) 
+        : ""
+    }${orders.date?.endDate ? 
+      " - " + formatDate(orders.date.endDate) 
+        : ""}`;
 
   // const handleSelect = (date) => {
   //   console.log(date); // native Date object

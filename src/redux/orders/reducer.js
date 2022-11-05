@@ -19,8 +19,8 @@ const initialState = {
   limit: 1,
   pages: 1,
   date: {
-    startDate: new Date(),
-    endDate: new Date(),
+    startDate: new Date("2022-07-13"),
+    endDate: new Date("2022-07-14"),
     key: 'selection',
   },
   status: statuslist.idle,
