@@ -50,8 +50,6 @@ export const fetchEvents = () => {
       let res = await debouncedFetchEvents("/cms/events", params);
 
       res.data.data.forEach((res) => {
-        console.log("res di foreach", res);
-        console.log("res?.category?", res?.category);
         res.categoryName = res?.category?.name ?? "";
         res.talentName = res?.talent?.name ?? "-";
       });

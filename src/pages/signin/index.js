@@ -31,24 +31,41 @@ function PageSignIn() {
 
   const handleSubmit = async () => {
     setIsLoading(true);
-    try {
-      const res = await postData("/cms/auth/signin", form);
-      // const res = await axios.post(`${config.api_host_dev}/cms/auth/signin`, {
-      //   email: form.email,
-      //   password: form.password,
-      // });
-      // console.log(res.data.data.token);
-      // localStorage.setItem("token", res.data.data.token);
-
-      dispatch(userLogin(res.data.data.token, res.data.data.role));
-
+    // try {
+    //   const res = await postData("/cms/auth/signin", form);
+    //   // const res = await axios.post(`${config.api_host_dev}/cms/auth/signin`, {
+    //   //   email: form.email,
+    //   //   password: form.password,
+    //   // });
+    //   // console.log(res.data.data.token);
+    //   // localStorage.setItem("token", res.data.data.token);
+    //   dispatch(userLogin(res.data.data.token, res.data.data.role));
+    //   setIsLoading(false);
+    //   navigate("/");
+    // } catch (err) {
+    //   console.log(err.response.data.msg);
+    //   setAlert({
+    //     status: true,
+    //     message: err?.response?.data?.msg ?? "Internal Server Error",
+    //     type: "danger",
+    //   });
+    // }
+    const res = await postData(`/cms/auth/signin`, form);
+    if (res?.data?.data) {
+      dispatch(
+        userLogin(
+          res.data.data.token,
+          res.data.data.role,
+          res.data.data.refreshToken
+        )
+      );
       setIsLoading(false);
       navigate("/");
-    } catch (err) {
-      console.log(err.response.data.msg);
+    } else {
+      setIsLoading(false);
       setAlert({
         status: true,
-        message: err?.response?.data?.msg ?? "Internal Server Error",
+        message: res?.response?.data?.msg ?? "Internal server error",
         type: "danger",
       });
     }
